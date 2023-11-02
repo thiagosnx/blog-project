@@ -27,6 +27,20 @@ class PostController extends Controller
         $post->private = $request->private;
         $post->team = $request->team;
 
+        //img upload
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")). "." . $extension;
+
+            $requestImage->move(public_path('img/players'), $imageName);
+
+            $post->image = $imageName;
+        }
+
         $post->save();
 
         return redirect('/')->with('msg', 'Publicação feita com sucesso!');

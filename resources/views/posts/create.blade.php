@@ -6,8 +6,12 @@
 
 <div id="post-create-container" class="col-md-6 offset-md-3">
     <h1>Crie um Post</h1>
-    <form action="/posts" method="POST">
+    <form action="/posts" method="POST" enctype="multipart/form-data">
         @csrf
+        <div class="form-group">
+            <label for="image">Foto</label>
+            <input type="file" id="image" name="image" class="form-control-file">
+        </div>
         <div class="form-group">
             <label for="tittle">Jogador</label>
             <input type="text" class="form-control" id="tittle" name="tittle" placeholder="Insira um Jogador">
