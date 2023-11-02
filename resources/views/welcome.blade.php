@@ -19,13 +19,16 @@
             <div class="card col-md-3">
                 <img src="/img/players/{{ $post->image }}" alt="{{ $post->tittle }}">
                 <div class="card-body">
-                    <p class="card-date">02/11/2023</p>
+                    <p class="card-date">{{ date('d/m/Y', strtotime($post->date)) }}</p>
                     <h5 class="card-tittle">{{ $post->tittle }}</h5>
-                    <p class="card-participants">x participantes</p>
+                    <p class="card-participants">x curtidas</p>
                     <a href="/posts/{{ $post->id }}" class="btn btn-primary">saber mais</a>
                 </div>
             </div>
         @endforeach
+        @if(count($posts)==0)
+            <p>Não há jogadores disponíveis</p>
+        @endif    
     </div>
 </div>
 

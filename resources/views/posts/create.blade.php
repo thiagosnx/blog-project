@@ -13,24 +13,47 @@
             <input type="file" id="image" name="image" class="form-control-file">
         </div>
         <div class="form-group">
-            <label for="tittle">Jogador</label>
-            <input type="text" class="form-control" id="tittle" name="tittle" placeholder="Insira um Jogador">
+            <label for="tittle">Nome</label>
+            <input type="text" class="form-control" id="tittle" name="tittle" placeholder="Nome do Jogador">
         </div>
         <div class="form-group">
-            <label for="tittle">Times</label>
+            <label for="date">Nascimento</label>
+            <input type="date" class="form-control" id="date" name="date" placeholder="Data de Nascimento">
+        </div>
+        <div class="form-group">
+            <label for="team">Times</label>
             <input type="text" class="form-control" id="team" name="team" placeholder="Times que já jogou">
         </div>
         <div class="form-group">
-            <label for="tittle">Sobre</label>
+            <label for="content">Sobre</label>
             <textarea class="form-control" name="content" id="content" placeholder="Sobre ele"></textarea>
         </div>
         <div class="form-group">
-            <label for="tittle">Privado?</label>
+            <label for="private">Privado?</label>
             <select name="private" id="private" class="form-control">
                 <option value="0">Não</option>
                 <option value="1">Sim</option>
             </select>
         </div>
+        <div class="form-group">
+            <label for="tittle">Especificações</label>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="World Cup"> World Cup
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Champions League"> Champions League
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Top Score World Cup"> Top Score World Cup
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Euro"> Euro
+            </div>
+            <div class="form-group">
+                <input type="checkbox" name="items[]" value="Copa América"> Copa América
+            </div>
+        </div>
+
         <input type="submit" class="btn btn-primary" value="Criar Post">
     </form>
 </div>

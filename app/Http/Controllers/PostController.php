@@ -23,9 +23,11 @@ class PostController extends Controller
         $post = new Post;
 
         $post->tittle = $request->tittle;
+        $post->date = $request->date;
         $post->content = $request->content;
         $post->private = $request->private;
         $post->team = $request->team;
+        $post->items= $request->items;
 
         //img upload
         if($request->hasFile('image') && $request->file('image')->isValid()){

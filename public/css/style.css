@@ -142,6 +142,7 @@ header{
 }
 #post-create-container label{
     font-weight: bold;
+    padding: 10px;
 }
 
 #post-create-container input,
@@ -187,7 +188,17 @@ header{
 
 #info-container #post-submit{
     margin: 20px 0;
-    
+
+}
+
+/*items-list*/
+#items-list{
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-list li{
+    display: flex;
 }
 
 /*footer*/
