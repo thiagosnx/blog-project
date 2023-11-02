@@ -52,6 +52,16 @@ header{
     color: #F2A340;
 }
 
+.msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
 /*search*/
 
 #search-container{
@@ -124,6 +134,22 @@ header{
     font-size: 14px;
     color: #757575;
 }
+
+/*post create page*/
+
+#post-create-container{
+    padding: 30px;
+}
+#post-create-container label{
+    font-weight: bold;
+}
+
+#post-create-container input,
+#post-create-container select,
+#post-create-container textarea{
+    font-size: 14px;
+}
+
 
 /*footer*/
 
