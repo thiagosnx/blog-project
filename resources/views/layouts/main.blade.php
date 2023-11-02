@@ -18,7 +18,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="collapse navbar-collapse" id="navbar">
                     <a href="/" class="navbar-brand">
-                        <img src="/img/blogger.png" alt="">
+                        <img src="/img/real.png" alt="">
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -39,7 +39,7 @@
         </header>
         @yield('content')
        <footer>
-        <p>Blog &copy; 2023</p>
+        <p>Blog do Real Madrid &copy; 2023</p>
        </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
