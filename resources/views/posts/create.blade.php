@@ -47,6 +47,9 @@
                 <input type="checkbox" name="items[]" value="Top Score World Cup"> Top Score World Cup
             </div>
             <div class="form-group">
+                <input type="checkbox" name="items[]" value="Ballon D'or"> Ballon D'or
+            </div>
+            <div class="form-group">
                 <input type="checkbox" name="items[]" value="Euro"> Euro
             </div>
             <div class="form-group">

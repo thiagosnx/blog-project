@@ -13,7 +13,7 @@
                 <h1>{{ $post->tittle }}</h1>
                 <p class="post-team"><ion-icon name="location-outline"></ion-icon> {{ $post->team }}</p>
                 <p class="post-participants"><ion-icon name="people-outline"></ion-icon> Likes</p>
-                <p class="post-owner"><ion-icon name="star-outline"></ion-icon> Dono do Post</p>
+                <p class="post-owner"><ion-icon name="star-outline"></ion-icon> Postado por {{ $postOwner['name'] }}</p>
                 <a href="" class="btn btn-primary" id="post-submit"> Curtir</a>
                 <h3>Títulos:</h3>
                 <ul id="items-list">

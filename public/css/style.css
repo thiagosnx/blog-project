@@ -197,6 +197,10 @@ header{
     padding-left: 0;
 }
 
+#content-container{
+    margin-top: 20px;
+}
+
 #items-list li{
     display: flex;
 }

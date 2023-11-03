@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -55,6 +56,10 @@ class PostController extends Controller
             $post->image = $imageName;
         }
 
+        $user = auth()->user();
+        $post->user_id = $user->id;
+
+
         $post->save();
 
         return redirect('/')->with('msg', 'Publicação feita com sucesso!');
@@ -65,6 +70,8 @@ class PostController extends Controller
     public function show($id){
         $post = Post::findOrFail($id);
 
-        return view('posts.show', ['post' => $post]);
+        $postOwner = User::where('id', $post->user_id)->first()->toArray(); //encontrando usario pelo id
+
+        return view('posts.show', ['post' => $post, 'postOwner' => $postOwner]);
     }
 }
