@@ -25,7 +25,7 @@
                             <a href="/" class="nav-link">Feed</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/posts/create" class="nav-link">Criar Post</a>
+                            <a href="/players/create" class="nav-link">Criar Post</a>
                         </li>
                         @auth
                         <li class="nav-item">

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Team;
+use App\Models\Player;
 
 class PostController extends Controller
 {
@@ -27,9 +29,7 @@ class PostController extends Controller
         return view('welcome', ['posts' => $posts, 'search' => $search]);//mapeando posts que estará no meu html e passando a variavel $posts p ele
     }
 
-    public function create(){
-        return view('posts.create');
-    }
+
 
     public function store(Request $request){ //logica do post method, altero os dados do meu model instanciado
                                             // pelos dados q eu estou recebendo no request e salvo, simples.
