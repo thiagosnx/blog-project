@@ -6,14 +6,18 @@
 
 <div id="search-container" class="col-md-12">
     <h1></h1>
-    <form action="">
+    <form action="/" method="GET">
         <input type="text" name="search" id="search" class="form-control" placeholder="Busque um Jogador">
     </form>
 </div>
 
 <div id="posts-container" class="col-md-12">
-    <h2>Publicações</h2>
+    @if($search)
+    <h2>Buscando por: {{ $search }}</h2>
+    @else
+    <h2>Jogadores</h2>
     <p class="subtittle">Veja o que está rolando</p>
+    @endif
     <div id="cards-container" class="row">
         @foreach($posts as $post)
             <div class="card col-md-3">
@@ -26,7 +30,9 @@
                 </div>
             </div>
         @endforeach
-        @if(count($posts)==0)
+        @if(count($posts)==0 && $search)
+            <p>Não foi encontrado nenhum <strong>{{ $search }}</strong>. <a href="/">Ver todos!</a></p>
+        @elseif(count($posts)==0)
             <p>Não há jogadores disponíveis</p>
         @endif    
     </div>

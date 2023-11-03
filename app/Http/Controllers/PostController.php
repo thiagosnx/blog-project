@@ -10,8 +10,20 @@ class PostController extends Controller
 {
     public function index(){
 
-        $posts = Post::all();//buscando todos os dados
-        return view('welcome', ['posts' => $posts]);//mapeando posts que estará no meu html e passando a variavel $posts p ele
+        $search = request('search');
+
+        if($search){
+
+            $posts = Post::where([
+                ['tittle', 'like', '%'.$search.'%']
+            ])->get();
+
+        }else{
+            $posts = Post::all();//buscando todos os dados
+        }
+
+       
+        return view('welcome', ['posts' => $posts, 'search' => $search]);//mapeando posts que estará no meu html e passando a variavel $posts p ele
     }
 
     public function create(){
