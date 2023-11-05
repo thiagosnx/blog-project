@@ -205,6 +205,29 @@ header{
     display: flex;
 }
 
+/*dashboard*/
+
+.dashboard-tittle-container{
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+}
+
+.dashboard-posts-container th{
+    width: 25%;
+}
+
+.dashboard-posts-container form{
+    display: inline-block;
+}
+
+/*edit page*/
+.img-preview{
+    width: 100px;
+    margin-top: 20px;
+}
+
+
 /*footer*/
 
 footer{

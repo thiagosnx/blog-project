@@ -74,4 +74,46 @@ class PostController extends Controller
 
         return view('posts.show', ['post' => $post, 'postOwner' => $postOwner]);
     }
+
+    public function dashboard(){
+        $user = auth()->user();
+
+        $posts = $user->posts;
+
+        return view('posts.dashboard', ['posts' => $posts]);
+    }
+
+    public function destroy($id){
+        Post::findOrFail($id)->delete();
+
+        return redirect('/dashboard')->with('msg', 'Publicação exclúida!');
+    }
+
+    public function edit($id){
+        $post = Post::findOrFail($id);
+
+        return view('posts.edit', ['post' => $post]);
+    }
+
+    public function update(Request $request){
+
+        $data = $request->all();
+
+        if($request->hasFile('image') && $request->file('image')->isValid()){
+
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")). "." . $extension;
+
+            $requestImage->move(public_path('img/players'), $imageName);
+
+            $data['image'] = $imageName;
+        }
+
+
+        Post::findOrFail($request->id)->update($data);
+        return redirect('/dashboard')->with('msg', 'Publicação editada!');
+    }
 }
