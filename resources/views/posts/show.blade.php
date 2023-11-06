@@ -12,9 +12,20 @@
             <div id="info-container" class="col-md-6">
                 <h1>{{ $post->tittle }}</h1>
                 <p class="post-team"><ion-icon name="location-outline"></ion-icon> {{ $post->team }}</p>
-                <p class="post-participants"><ion-icon name="people-outline"></ion-icon> Likes</p>
+                <p class="post-participants"><ion-icon name="people-outline"></ion-icon>{{ count($post->users) }} curtidas</p>
                 <p class="post-owner"><ion-icon name="star-outline"></ion-icon> Postado por {{ $postOwner['name'] }}</p>
-                <a href="" class="btn btn-primary" id="post-submit"> Curtir</a>
+                @if(!$hasUserReacted)
+                <form action="/posts/react/{{ $post->id }}" method="POST">
+                    @csrf
+                    <a href="/posts/react/{{ $post->id }}" class="btn btn-primary" id="post-submit"
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                     Curtir</a>
+                </form>
+                @else
+                <p class="already-joined-msg">Curtido!</p>
+                @endif
+
                 <h3>Títulos:</h3>
                 <ul id="items-list">
                     @foreach($post->items as $item)

@@ -25,7 +25,7 @@
                 <div class="card-body">
                     <p class="card-date">{{ date('d/m/Y', strtotime($post->date)) }}</p>
                     <h5 class="card-tittle">{{ $post->tittle }}</h5>
-                    <p class="card-participants">x curtidas</p>
+                    <p class="card-participants">{{ count($post->users) }} curtidas</p>
                     <a href="/posts/{{ $post->id }}" class="btn btn-primary">saber mais</a>
                 </div>
             </div>

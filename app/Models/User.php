@@ -62,4 +62,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Models\Post');
     }
+
+    public function postsAsReaction(){
+        return $this->belongsToMany('App\Models\Post');
+    }
 }

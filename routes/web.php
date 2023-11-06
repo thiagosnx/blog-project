@@ -11,6 +11,8 @@ Route::get('/dashboard', [PostController::class, 'dashboard'])->middleware('auth
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('auth');
 Route::get('posts/edit/{id}', [PostController::class, 'edit'])->middleware('auth');
 Route::put('/posts/update/{id}', [PostController::class, 'update'])->middleware('auth');
+Route::post('/posts/react/{id}', [PostController::class, 'reactPost'])->middleware('auth');
+Route::delete('/posts/unreact/{id}', [PostController::class, 'unreactPost'])->middleware('auth');
 
 
 

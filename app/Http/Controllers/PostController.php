@@ -70,9 +70,22 @@ class PostController extends Controller
     public function show($id){
         $post = Post::findOrFail($id);
 
+        $user = auth()->user();
+        $hasUserReacted = false;
+
+        if($user){
+            $userReacts = $user->postsAsReaction->toArray();
+
+            foreach($userReacts as $userReact){
+                if($userReact['id'] == $id){
+                    $hasUserReacted = true;
+                }
+            }
+        }
+
         $postOwner = User::where('id', $post->user_id)->first()->toArray(); //encontrando usario pelo id
 
-        return view('posts.show', ['post' => $post, 'postOwner' => $postOwner]);
+        return view('posts.show', ['post' => $post, 'postOwner' => $postOwner, 'hasUserReacted' => $hasUserReacted]);
     }
 
     public function dashboard(){
@@ -80,7 +93,9 @@ class PostController extends Controller
 
         $posts = $user->posts;
 
-        return view('posts.dashboard', ['posts' => $posts]);
+        $postsAsReaction = $user->postsAsReaction;
+
+        return view('posts.dashboard', ['posts' => $posts, 'postsAsReaction' => $postsAsReaction]);
     }
 
     public function destroy($id){
@@ -90,8 +105,14 @@ class PostController extends Controller
     }
 
     public function edit($id){
+        $user = auth()->user();
+
         $post = Post::findOrFail($id);
 
+        if($user->id != $post->user_id){
+            return redirect('/dashboard');
+        }
+            
         return view('posts.edit', ['post' => $post]);
     }
 
@@ -115,5 +136,22 @@ class PostController extends Controller
 
         Post::findOrFail($request->id)->update($data);
         return redirect('/dashboard')->with('msg', 'Publicação editada!');
+    }
+
+    public function reactPost($id){
+        $user = auth()->user();
+
+        $user->postsAsReaction()->attach($id);
+
+        $post = Post::findOrFail($id);
+
+        return back()->with('msg', 'Like no ' . $post->tittle);
+    }
+
+    public function unreactPost($id){
+        $user = auth()->user();
+        $user->postsAsReaction()->detach($id);
+        $post = Post::findOrFail($id);
+        return back()->with('msg', 'Curtida removida de ' . $post->tittle);
     }
 }
